@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const axios = require("axios").default;
 
 const Register = ({
@@ -14,6 +14,7 @@ const Register = ({
   setRegisterPassword,
   registerPassword,
 }) => {
+  let navigate = useNavigate();
   // Functions to handle input fields
   const handleFirstNameInput = (e) => {
     setFirstName(e.target.value);
@@ -35,7 +36,7 @@ const Register = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     // Since we use preventDefault, the form action won't be executed and hence we perform the post request through axios
-    //Registration Form Submission
+    //Registration Form Submission by POST request through axios
     axios({
       method: "post",
       data: {
@@ -52,6 +53,8 @@ const Register = ({
     setRegisterUsername("");
     setRegisterPassword("");
     setDepartment("eee");
+    //Redirect to login on submission
+    navigate("/login");
   };
   return (
     <div className="Register">

@@ -19,8 +19,4 @@ router.post("/users/register", (req, res) => {
   });
 });
 
-// router.post("/users/login", (req, res) => {
-//   //User details are saved to database
-// });
-
 module.exports = router;
