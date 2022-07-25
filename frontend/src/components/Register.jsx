@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+const axios = require("axios").default;
+
 const Register = ({
   setFirstName,
   firstName,
@@ -32,11 +34,24 @@ const Register = ({
   //Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Since we use preventDefault, the form action won't be executed and hence we perform the post request through axios
+    //Registration Form Submission
+    axios({
+      method: "post",
+      data: {
+        firstName: firstName,
+        lastName: lastName,
+        username: registerUsername,
+        password: registerPassword,
+        department: department,
+      },
+      url: "http://localhost:5000/api/users/register",
+    });
     setFirstName("");
     setLastName("");
     setRegisterUsername("");
     setRegisterPassword("");
-    setDepartment("");
+    setDepartment("eee");
   };
   return (
     <div className="Register">
@@ -67,6 +82,8 @@ const Register = ({
             <input
               required
               type="text"
+              minLength={5}
+              name="username"
               value={registerUsername}
               onChange={handleRegisterUsernameInput}
             />
@@ -76,18 +93,29 @@ const Register = ({
             <input
               required
               type="password"
+              minLength={6}
+              name="password"
               value={registerPassword}
               onChange={handleRegisterPasswordInput}
             />
           </div>
           <div className="form-group">
             <label>Department:</label>
-            <input
-              required
-              type="text"
+            <select
               value={department}
+              name="department"
               onChange={handleDepartmentInput}
-            />
+            >
+              <option value="cse">CSE</option>
+              <option value="ece">ECE</option>
+              <option value="eee">EEE</option>
+              <option value="mech">MECH</option>
+              <option value="prod">PROD</option>
+              <option value="ice">ICE</option>
+              <option value="chem">CHEM</option>
+              <option value="civil">CIVIL</option>
+              <option value="meta">META</option>
+            </select>
           </div>
           <button className="btn register-submit-btn" onSubmit={handleSubmit}>
             Register

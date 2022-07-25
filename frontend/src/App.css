@@ -59,7 +59,19 @@
   transition: 0.3s ease;
 }
 
+.btn-logout {
+  color: black;
+  border: 2px solid hsl(245, 75%, 52%);
+  transition: 0.3s ease;
+}
+
 .btn-register:hover {
+  color: white;
+  background-color: hsl(245, 75%, 52%);
+  transition: 0.3s ease;
+}
+
+.btn-logout:hover {
   color: white;
   background-color: hsl(245, 75%, 52%);
   transition: 0.3s ease;

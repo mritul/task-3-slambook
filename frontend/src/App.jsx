@@ -9,15 +9,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [department, setDepartment] = useState("");
+  const [department, setDepartment] = useState("eee");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // To change the buttons seen in navbar when logged in and out respectively
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <main className="content">
           <Routes>
             <Route
