@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import HelperMessage from "./HelperMessage";
 const axios = require("axios").default;
 
 const Register = ({
@@ -13,6 +14,8 @@ const Register = ({
   registerUsername,
   setRegisterPassword,
   registerPassword,
+  usernameTaken,
+  setUsernameTaken,
 }) => {
   let navigate = useNavigate();
   // Functions to handle input fields
@@ -47,14 +50,28 @@ const Register = ({
         department: department,
       },
       url: "http://localhost:5000/api/users/register",
-    });
-    setFirstName("");
-    setLastName("");
-    setRegisterUsername("");
-    setRegisterPassword("");
-    setDepartment("eee");
-    //Redirect to login on submission
-    navigate("/login");
+    })
+      .then((response) => {
+        if (response.data.msg == "Username available") {
+          //Making all resets and redirecting to login on succesful submission to database(if the username is not taken already)
+          setUsernameTaken(false);
+          setFirstName("");
+          setLastName("");
+          setRegisterUsername("");
+          setRegisterPassword("");
+          setDepartment("eee");
+          navigate("/login");
+        } else {
+          setUsernameTaken(true);
+          //We keep a setTimeout so that the helper message that is conditionally rendered in the HTML disappears after 2s. We setTimout the hook to 2s than modifying the conditionally rendered HTML.
+          setTimeout(() => {
+            setUsernameTaken(false);
+          }, 2000);
+          // Resetting just the username field in case the username is already taken and giving the user an opportunity to fill the username field again
+          setRegisterUsername("");
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="Register">
@@ -129,6 +146,9 @@ const Register = ({
               Login
             </Link>
           </p>
+          {usernameTaken && (
+            <HelperMessage messageContent="That username is already taken" />
+          )}
         </form>
       </div>
       <div className="card-right">

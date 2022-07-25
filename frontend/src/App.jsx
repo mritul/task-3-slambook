@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+  //useState hooks for handling input fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [department, setDepartment] = useState("eee");
@@ -14,7 +15,10 @@ function App() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // To change the buttons seen in navbar when logged in and out respectively
+  //useState hook for monitoring if user is logged in so that logout button can be swapped with login and register buttons
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //useState hook to show helper message if username is already taken in the registration process
+  const [usernameTaken, setUsernameTaken] = useState(false);
   return (
     <div className="App">
       <Router>
@@ -59,6 +63,8 @@ function App() {
                   registerUsername={registerUsername}
                   registerPassword={registerPassword}
                   department={department}
+                  usernameTaken={usernameTaken}
+                  setUsernameTaken={setUsernameTaken}
                 />
               }
             />

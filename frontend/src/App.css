@@ -220,6 +220,13 @@ main {
   animation: float infinite 2s linear;
 }
 
+/* Helper message that displays if username already exists in database during registration and so on */
+.HelperMessage {
+  text-align: center;
+  padding: 1rem;
+  color: red;
+}
+
 /* @media queries */
 
 @media screen and (max-width: 720px) {
