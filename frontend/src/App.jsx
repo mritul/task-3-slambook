@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import Dashboard from "./components/Dashboard.jsx";
+import Search from "./components/Search.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -75,6 +76,16 @@ function App() {
               path="/dashboard"
               element={
                 <Dashboard
+                  userNotFound={userNotFound}
+                  setUserNotFound={setUserNotFound}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/search"
+              element={
+                <Search
                   userNotFound={userNotFound}
                   setUserNotFound={setUserNotFound}
                 />
