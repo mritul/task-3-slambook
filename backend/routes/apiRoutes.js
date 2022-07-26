@@ -18,6 +18,31 @@ router.post("/users/register", (req, res) => {
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(req.body.password, salt, (err, hash) => {
             req.body.password = hash;
+            // Capitalizing first and last names before saving to DB
+            const fn = req.body.firstName;
+            const ln = req.body.lastName;
+            var tempFn = "";
+            var tempLn = "";
+            // Capitalizing first name
+            for (let i = 0; i < fn.length; i++) {
+              if (i == 0) {
+                tempFn += fn[i].toUpperCase();
+              } else {
+                tempFn += fn[i].toLowerCase();
+              }
+            }
+            // Capitalizing last name only if it exists(as it is not a mandatory field)
+            if (ln) {
+              for (let i = 0; i < ln.length; i++) {
+                if (i == 0) {
+                  tempLn += ln[i].toUpperCase();
+                } else {
+                  tempLn += ln[i].toLowerCase();
+                }
+              }
+            }
+            req.body.firstName = tempFn;
+            req.body.lastName = tempLn;
             const user = new User(req.body);
             user
               .save()
@@ -28,7 +53,6 @@ router.post("/users/register", (req, res) => {
       }
     }
   });
-  // res.send("Success");
 });
 
 module.exports = router;
