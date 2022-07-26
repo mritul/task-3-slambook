@@ -115,7 +115,7 @@ main {
   padding: 2rem;
   margin: auto;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid rgb(68, 68, 68);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +157,7 @@ main {
 .Register {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 2px solid black;
+  border: 2px solid rgb(68, 68, 68);
   width: 60%;
   min-width: 700px;
   margin: auto;
@@ -227,9 +227,150 @@ main {
   color: red;
 }
 
+/* Dashboard */
+
+.Dashboard {
+  width: 60%;
+  min-width: 700px;
+}
+
+.Dashboard .underline {
+  margin-bottom: 2rem;
+}
+
+.dashboard-container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background-color: hsl(225, 100%, 94%);
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.full-name {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.username {
+  font-size: 1.3rem;
+  color: grey;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.department {
+  font-size: 1.3rem;
+  color: grey;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.search-field-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 1.5rem;
+}
+
+.search-field-card > h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-field-card h1:first-child {
+  color: hsl(246, 96%, 52%);
+}
+
+.search-user-btn {
+  width: 30px;
+  height: 30px;
+  background-color: hsl(245, 75%, 52%);
+  border-radius: 2px;
+  color: white;
+  transition: 1s ease;
+}
+
+.search-user-btn:hover {
+  box-shadow: 0 0 10px 0 hsl(246, 100%, 78%);
+  transition: 0.3s ease;
+}
+
+#user-search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+#user-search-form input {
+  height: 30px;
+  padding: 0.5rem;
+  width: 60%;
+  border: 2px solid rgb(185, 185, 185);
+  border-radius: 2px;
+  outline: none;
+}
+
+#user-search-form input:focus {
+  border-color: skyblue;
+}
+
+.search-field-card .title-msg {
+  align-self: flex-start;
+  font-size: 1rem;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 2rem;
+}
+
+.features p {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+  color: grey;
+  font-weight: 500;
+}
+
+.features p i {
+  color: green;
+}
+
+.underline-dashboard-mobile {
+  display: none;
+}
+
+/* Comments section of dashboard */
+.comments-section-instruction {
+  color: grey;
+  font-weight: 500;
+}
+
 /* @media queries */
 
 @media screen and (max-width: 720px) {
+  /* Modifications to register page  */
   .Register {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
@@ -242,6 +383,33 @@ main {
 
   #register-form {
     width: 100%;
+  }
+
+  /* Modifications to dashboard page */
+  .Dashboard {
+    min-width: 310px;
+    margin-top: 5rem;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .search-field-card,
+  .profile-card {
+    width: 100%;
+  }
+
+  .underline-dashboard-mobile {
+    display: block;
+  }
+
+  .profile-card {
+    margin-bottom: 2rem;
+  }
+
+  .features p {
+    text-align: start;
   }
 }
 
@@ -257,6 +425,18 @@ main {
 
   .Register > h1 {
     font-size: 0.5rem;
+  }
+
+  .search-field-card .title-msg {
+    align-self: center;
+  }
+
+  .features {
+    margin-left: 0;
+  }
+
+  .features p {
+    text-align: center;
   }
 }
 

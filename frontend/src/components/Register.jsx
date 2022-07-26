@@ -52,7 +52,7 @@ const Register = ({
       url: "http://localhost:5000/api/users/register",
     })
       .then((response) => {
-        if (response.data.msg == "Username available") {
+        if (response.data.msg === "Username available") {
           //Making all resets and redirecting to login on succesful submission to database(if the username is not taken already)
           setUsernameTaken(false);
           setFirstName("");
@@ -91,7 +91,6 @@ const Register = ({
           <div className="form-group">
             <label>Last name:</label>
             <input
-              required
               type="text"
               value={lastName}
               onChange={handleLastNameInput}

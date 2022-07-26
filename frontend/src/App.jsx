@@ -19,6 +19,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //useState hook to show helper message if username is already taken in the registration process
   const [usernameTaken, setUsernameTaken] = useState(false);
+  //useState hook to show helper message if user is not found on searching for profile
+  const [userNotFound, setUserNotFound] = useState(false);
   return (
     <div className="App">
       <Router>
@@ -68,7 +70,16 @@ function App() {
                 />
               }
             />
-            <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route
+              exact
+              path="/dashboard"
+              element={
+                <Dashboard
+                  userNotFound={userNotFound}
+                  setUserNotFound={setUserNotFound}
+                />
+              }
+            />
           </Routes>
         </main>
       </Router>
