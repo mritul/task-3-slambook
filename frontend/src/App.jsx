@@ -16,6 +16,8 @@ function App() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [about, setAbout] = useState("");
+  const [batch, setBatch] = useState("");
   //useState hook for monitoring if user is logged in so that logout button can be swapped with login and register buttons
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //useState hook to show helper message if username is already taken in the registration process
@@ -68,6 +70,10 @@ function App() {
                   department={department}
                   usernameTaken={usernameTaken}
                   setUsernameTaken={setUsernameTaken}
+                  about={about}
+                  setAbout={setAbout}
+                  batch={batch}
+                  setBatch={setBatch}
                 />
               }
             />

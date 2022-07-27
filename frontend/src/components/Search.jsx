@@ -3,9 +3,7 @@ import Results from "./Results";
 const Search = ({ userNotFound, setUserNotFound }) => {
   return (
     <div className="search-field-card">
-      <h1 className="main-title">
-        Search for a profile by entering the username
-      </h1>
+      <h1 className="main-title">Search for a user</h1>
       <form id="user-search-form">
         <input type="text" placeholder="Enter a username to search for" />
         <button className="btn search-user-btn">

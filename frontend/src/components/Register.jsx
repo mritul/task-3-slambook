@@ -16,6 +16,10 @@ const Register = ({
   registerPassword,
   usernameTaken,
   setUsernameTaken,
+  about,
+  setAbout,
+  batch,
+  setBatch,
 }) => {
   let navigate = useNavigate();
   // Functions to handle input fields
@@ -26,13 +30,23 @@ const Register = ({
     setLastName(e.target.value);
   };
   const handleRegisterUsernameInput = (e) => {
-    setRegisterUsername(e.target.value);
+    //Not letting the user enter a username with space in it
+    // To achieve this we see if the last character of the e.target.value is a space
+    if (e.target.value[e.target.value.length - 1] != " ") {
+      setRegisterUsername(e.target.value);
+    }
   };
   const handleRegisterPasswordInput = (e) => {
     setRegisterPassword(e.target.value);
   };
   const handleDepartmentInput = (e) => {
     setDepartment(e.target.value);
+  };
+  const handleAboutInput = (e) => {
+    setAbout(e.target.value);
+  };
+  const handleBatchInput = (e) => {
+    setBatch(e.target.value);
   };
 
   //Function to handle form submission
@@ -48,6 +62,8 @@ const Register = ({
         username: registerUsername,
         password: registerPassword,
         department: department,
+        about: about,
+        batch: batch,
       },
       url: "http://localhost:5000/api/users/register",
     })
@@ -59,7 +75,9 @@ const Register = ({
           setLastName("");
           setRegisterUsername("");
           setRegisterPassword("");
+          setBatch("");
           setDepartment("eee");
+          setAbout("");
           navigate("/login");
         } else {
           setUsernameTaken(true);
@@ -105,6 +123,8 @@ const Register = ({
               name="username"
               value={registerUsername}
               onChange={handleRegisterUsernameInput}
+              pattern="[a-zA-Z0-9]+"
+              title="Username should be alphanumeric"
             />
           </div>
           <div className="form-group">
@@ -135,6 +155,27 @@ const Register = ({
               <option value="civil">CIVIL</option>
               <option value="meta">META</option>
             </select>
+          </div>
+          <div className="form-group">
+            <label>Batch:</label>
+            <input
+              type="number"
+              placeholder="Year of graduation (2025,2026,etc...)"
+              value={batch}
+              onChange={handleBatchInput}
+            />
+          </div>
+          <div className="form-group">
+            <label>About</label>
+            <textarea
+              type="text"
+              required
+              placeholder="Write about yourself...(max limit 500 characters)"
+              maxLength={500}
+              className="about-field"
+              value={about}
+              onChange={handleAboutInput}
+            />
           </div>
           <button className="btn register-submit-btn" onSubmit={handleSubmit}>
             Register

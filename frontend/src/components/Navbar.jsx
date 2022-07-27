@@ -13,9 +13,19 @@ const Navbar = ({ isLoggedIn }) => {
       </h1>
       <div className="btn-panel">
         {isLoggedIn ? (
-          <Link to="/logout">
-            <button className="btn btn-logout">Logout</button>
-          </Link>
+          <>
+            <Link to="/search">
+              <button className="btn btn-search-nav">Search</button>
+            </Link>
+            <Link to="/dashboard">
+              <button className="btn btn-profile-nav">
+                <i className="fa-solid fa-user"></i>
+              </button>
+            </Link>
+            <Link to="/logout">
+              <button className="btn btn-logout">Logout</button>
+            </Link>
+          </>
         ) : (
           <>
             <Link to="/register">

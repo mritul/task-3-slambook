@@ -55,7 +55,7 @@
   justify-content: center;
   justify-content: space-between;
   padding: 1rem;
-  background-color: hsl(225, 100%, 94%);
+  background-color: hsl(0, 0%, 95%);
 }
 
 .Navbar h1 {
@@ -91,6 +91,21 @@
   transition: 0.3s ease;
 }
 
+.btn-search-nav {
+  color: white;
+  background-color: hsl(245, 75%, 52%);
+  border: 2px solid hsl(245, 75%, 52%);
+}
+
+.btn-profile-nav {
+  background-color: hsl(0, 0%, 80%);
+  color: hsl(195, 2%, 53%);
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
 .btn-register:hover {
   color: white;
   background-color: hsl(245, 75%, 52%);
@@ -103,7 +118,8 @@
   transition: 0.3s ease;
 }
 
-.btn-login:hover {
+.btn-login:hover,
+.btn-search-nav:hover {
   background-color: hsla(245, 75%, 52%, 50%);
   border-color: hsla(245, 75%, 52%, 50%);
   transition: 0.3s ease;
@@ -234,6 +250,10 @@ main {
   animation: float infinite 2s linear;
 }
 
+.about-field {
+  width: 100%;
+}
+
 /* Helper message that displays if username already exists in database during registration and so on */
 .HelperMessage {
   text-align: center;
@@ -254,15 +274,17 @@ main {
 
 .dashboard-container {
   width: 100%;
+  border: 2px solid black;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 2rem;
 }
 
 .profile-card {
+  width: 49%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
   background-color: hsl(225, 100%, 94%);
   padding: 2rem;
   border-radius: 20px;
@@ -297,6 +319,22 @@ main {
 
 .underline-dashboard-mobile {
   display: none;
+}
+
+.about-me {
+  width: 49%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.about-me h1 {
+  color: hsl(232, 100%, 50%);
+  margin-bottom: 1rem;
+}
+
+.about-me p {
+  text-align: start;
 }
 
 /* Comments section of dashboard */
@@ -389,11 +427,12 @@ main {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 1rem;
 }
 
 .Result {
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
   background-color: hsl(245, 100%, 98%);
   padding: 1rem;
   display: flex;
@@ -471,8 +510,15 @@ main {
     display: block;
   }
 
-  .profile-card {
+  .profile-card,
+  .about-me {
+    width: 100%;
     margin-bottom: 2rem;
+    align-items: center;
+  }
+
+  .about-me > * {
+    text-align: center !important;
   }
 }
 

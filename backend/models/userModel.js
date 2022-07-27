@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  about: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);
