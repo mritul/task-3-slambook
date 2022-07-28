@@ -1,23 +1,34 @@
 import "./App.css";
 import { useState } from "react";
 import Navbar from "./components/Navbar.jsx";
-import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
-import Dashboard from "./components/Dashboard.jsx";
-import Search from "./components/Search.jsx";
+import Login from "./Login.jsx";
+import Register from "./Register.jsx";
+import Dashboard from "./Dashboard.jsx";
+import Search from "./Search.jsx";
+import Profile from "./Profile.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SlamBook from "./SlamBook";
 
 function App() {
   //useState hooks for handling input fields
+  // Registration form
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [department, setDepartment] = useState("eee");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [batch, setBatch] = useState("");
+  const [about, setAbout] = useState("");
+
+  //Login form
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [about, setAbout] = useState("");
-  const [batch, setBatch] = useState("");
+
+  //Slambook form
+  const [answer1, setAnswer1] = useState("");
+  const [answer2, setAnswer2] = useState("");
+  const [answer3, setAnswer3] = useState("");
+
   //useState hook for monitoring if user is logged in so that logout button can be swapped with login and register buttons
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //useState hook to show helper message if username is already taken in the registration process
@@ -94,6 +105,21 @@ function App() {
                 <Search
                   userNotFound={userNotFound}
                   setUserNotFound={setUserNotFound}
+                />
+              }
+            />
+            <Route exact path="/profile/:id" element={<Profile />} />
+            <Route
+              exact
+              path="/slambook/:id"
+              element={
+                <SlamBook
+                  answer1={answer1}
+                  answer2={answer2}
+                  answer3={answer3}
+                  setAnswer1={setAnswer1}
+                  setAnswer2={setAnswer2}
+                  setAnswer3={setAnswer3}
                 />
               }
             />

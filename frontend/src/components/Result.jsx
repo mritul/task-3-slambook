@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Result = () => {
   return (
     <div className="Result">
@@ -11,7 +12,9 @@ const Result = () => {
           <i className="fa-solid fa-building"></i>ECE
         </h1>
       </div>
-      <button className="btn btn-view-profile">View Profile</button>
+      <Link className="link-text" to="/profile/:id">
+        <button className="btn btn-view-profile">View Profile</button>
+      </Link>
     </div>
   );
 };

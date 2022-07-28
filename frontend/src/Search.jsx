@@ -1,5 +1,5 @@
-import HelperMessage from "./HelperMessage";
-import Results from "./Results";
+import HelperMessage from "./components/HelperMessage";
+import Results from "./components/Results";
 const Search = ({ userNotFound, setUserNotFound }) => {
   return (
     <div className="search-field-card">

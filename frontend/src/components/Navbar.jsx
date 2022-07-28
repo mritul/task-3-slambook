@@ -12,7 +12,7 @@ const Navbar = ({ isLoggedIn }) => {
         Slambook App
       </h1>
       <div className="btn-panel">
-        {isLoggedIn ? (
+        {!isLoggedIn ? (
           <>
             <Link to="/search">
               <button className="btn btn-search-nav">Search</button>

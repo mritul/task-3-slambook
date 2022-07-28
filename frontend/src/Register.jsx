@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import HelperMessage from "./HelperMessage";
+import HelperMessage from "./components/HelperMessage";
 const axios = require("axios").default;
 
 const Register = ({
@@ -32,7 +32,7 @@ const Register = ({
   const handleRegisterUsernameInput = (e) => {
     //Not letting the user enter a username with space in it
     // To achieve this we see if the last character of the e.target.value is a space
-    if (e.target.value[e.target.value.length - 1] != " ") {
+    if (e.target.value[e.target.value.length - 1] !== " ") {
       setRegisterUsername(e.target.value);
     }
   };
@@ -171,7 +171,7 @@ const Register = ({
               type="text"
               required
               placeholder="Write about yourself...(max limit 500 characters)"
-              maxLength={500}
+              maxLength={600}
               className="about-field"
               value={about}
               onChange={handleAboutInput}

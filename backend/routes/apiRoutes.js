@@ -4,6 +4,7 @@ const router = express.Router();
 
 const User = require("../models/userModel");
 
+// POST /users/register - Creation of a user in the database
 router.post("/users/register", (req, res) => {
   //Checking if username is already taken and then proceeding
   User.findOne({ username: req.body.username }, (err, user) => {
@@ -21,28 +22,28 @@ router.post("/users/register", (req, res) => {
             // Capitalizing first and last names before saving to DB
             const fn = req.body.firstName;
             const ln = req.body.lastName;
-            var tempFn = "";
-            var tempLn = "";
+            var titleCasedFn = "";
+            var titleCasedLn = "";
             // Capitalizing first name
             for (let i = 0; i < fn.length; i++) {
               if (i == 0) {
-                tempFn += fn[i].toUpperCase();
+                titleCasedFn += fn[i].toUpperCase();
               } else {
-                tempFn += fn[i].toLowerCase();
+                titleCasedFn += fn[i].toLowerCase();
               }
             }
             // Capitalizing last name only if it exists(as it is not a mandatory field)
             if (ln) {
               for (let i = 0; i < ln.length; i++) {
                 if (i == 0) {
-                  tempLn += ln[i].toUpperCase();
+                  titleCasedLn += ln[i].toUpperCase();
                 } else {
-                  tempLn += ln[i].toLowerCase();
+                  titleCasedLn += ln[i].toLowerCase();
                 }
               }
             }
-            req.body.firstName = tempFn;
-            req.body.lastName = tempLn;
+            req.body.firstName = titleCasedFn;
+            req.body.lastName = titleCasedLn;
             const user = new User(req.body);
             user
               .save()
@@ -53,6 +54,11 @@ router.post("/users/register", (req, res) => {
       }
     }
   });
+});
+
+//POST /users/:id/slambook - Updating the empty fields (the comments object) of the mongoose model "User" with the form fields of the slambook page
+router.post("/users/:id/slambook", (req, res) => {
+  res.send("Hi");
 });
 
 module.exports = router;
