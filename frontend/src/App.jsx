@@ -10,35 +10,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SlamBook from "./SlamBook";
 
 function App() {
-  //useState hooks for handling input fields
-  // Registration form
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [department, setDepartment] = useState("eee");
-  const [registerUsername, setRegisterUsername] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [batch, setBatch] = useState("");
-  const [about, setAbout] = useState("");
-
-  //Login form
-  const [loginUsername, setLoginUsername] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-
-  //Slambook form
-  const [answer1, setAnswer1] = useState("");
-  const [answer2, setAnswer2] = useState("");
-  const [answer3, setAnswer3] = useState("");
-
   //useState hook for monitoring if user is logged in so that logout button can be swapped with login and register buttons
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  //useState hook to show helper message if username is already taken in the registration process
-  const [usernameTaken, setUsernameTaken] = useState(false);
-  //useState hook to show helper message if user is not found on searching for profile
-  const [userNotFound, setUserNotFound] = useState(false);
+
+  //useState hook to store the details of the user that is logged in currently (this is set in the login phase)
+  const [userDetails, setUserDetails] = useState(null);
+
   return (
     <div className="App">
       <Router>
-        <Navbar isLoggedIn={isLoggedIn} />
+        <Navbar isLoggedIn={isLoggedIn} userDetails={userDetails} />
         <main className="content">
           <Routes>
             <Route
@@ -46,10 +27,9 @@ function App() {
               path="/"
               element={
                 <Login
-                  loginUsername={loginUsername}
-                  loginPassword={loginPassword}
-                  setLoginPassword={setLoginPassword}
-                  setLoginUsername={setLoginUsername}
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  setUserDetails={setUserDetails}
                 />
               }
             />
@@ -57,72 +37,19 @@ function App() {
               path="/login"
               element={
                 <Login
-                  loginUsername={loginUsername}
-                  loginPassword={loginPassword}
-                  setLoginPassword={setLoginPassword}
-                  setLoginUsername={setLoginUsername}
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  setUserDetails={setUserDetails}
                 />
               }
             />
-            <Route
-              exact
-              path="/register"
-              element={
-                <Register
-                  setFirstName={setFirstName}
-                  setLastName={setLastName}
-                  setRegisterUsername={setRegisterUsername}
-                  setRegisterPassword={setRegisterPassword}
-                  setDepartment={setDepartment}
-                  firstName={firstName}
-                  lastName={lastName}
-                  registerUsername={registerUsername}
-                  registerPassword={registerPassword}
-                  department={department}
-                  usernameTaken={usernameTaken}
-                  setUsernameTaken={setUsernameTaken}
-                  about={about}
-                  setAbout={setAbout}
-                  batch={batch}
-                  setBatch={setBatch}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/dashboard"
-              element={
-                <Dashboard
-                  userNotFound={userNotFound}
-                  setUserNotFound={setUserNotFound}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/search"
-              element={
-                <Search
-                  userNotFound={userNotFound}
-                  setUserNotFound={setUserNotFound}
-                />
-              }
-            />
+            <Route exact path="/register" element={<Register />} />
+            {isLoggedIn && (
+              <Route exact path="/dashboard" element={<Dashboard />} />
+            )}
+            <Route exact path="/search" element={<Search />} />
             <Route exact path="/profile/:id" element={<Profile />} />
-            <Route
-              exact
-              path="/slambook/:id"
-              element={
-                <SlamBook
-                  answer1={answer1}
-                  answer2={answer2}
-                  answer3={answer3}
-                  setAnswer1={setAnswer1}
-                  setAnswer2={setAnswer2}
-                  setAnswer3={setAnswer3}
-                />
-              }
-            />
+            <Route exact path="/slambook/:id" element={<SlamBook />} />
           </Routes>
         </main>
       </Router>

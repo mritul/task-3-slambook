@@ -35,3 +35,13 @@ _These above fields are required and hence are fulfilled during registration_
     - **answer3**
 
 _These fields are kept not required and are given a default value of an empty string("") because while registering, the data cannot be stored to database if it were set to required_
+
+## Authentication
+
+<hr>
+
+- In the backend we use passport.js local strategy and the middleware authenticates.
+
+- In the frontend, we get a response which carries the data of whether the user is authenticated or not. Hence:
+  - A global useState hook "isLoggedIn" can be initially set to false and if successfully logged in using the login page, it can be set to true.
+  - Now, for the other pages like profile, dashboard, search and slambook to be rendered, we can conditionally render them based on the isLoggedIn flag or else redirect the user to /login

@@ -1,6 +1,10 @@
 import HelperMessage from "./components/HelperMessage";
 import Results from "./components/Results";
-const Search = ({ userNotFound, setUserNotFound }) => {
+import { useState } from "react";
+const Search = () => {
+  //useState hook to show helper message if user is not found on searching for profile
+  const [userNotFound, setUserNotFound] = useState(false);
+
   return (
     <div className="search-field-card">
       <h1 className="main-title">Search for a user</h1>

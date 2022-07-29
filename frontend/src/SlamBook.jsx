@@ -1,11 +1,11 @@
-const SlamBook = ({
-  answer1,
-  setAnswer1,
-  answer2,
-  setAnswer2,
-  answer3,
-  setAnswer3,
-}) => {
+import { useState } from "react";
+
+const SlamBook = () => {
+  // useState hook to handle input fields of the slambook form
+  const [answer1, setAnswer1] = useState("");
+  const [answer2, setAnswer2] = useState("");
+  const [answer3, setAnswer3] = useState("");
+
   // Functions to handle input fields
   const handleAnswer1Input = (e) => {
     setAnswer1(e.target.value);

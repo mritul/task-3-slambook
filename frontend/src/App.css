@@ -87,8 +87,9 @@
 
 .btn-logout {
   color: black;
-  border: 2px solid tomato;
   transition: 0.3s ease;
+  width: 40px;
+  font-size: 1.5rem;
 }
 
 .btn-search-nav {
@@ -100,8 +101,8 @@
 .btn-profile-nav {
   background-color: hsl(0, 0%, 80%);
   color: hsl(195, 2%, 53%);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   font-size: 1.5rem;
   border-radius: 50%;
 }
@@ -113,8 +114,7 @@
 }
 
 .btn-logout:hover {
-  color: white;
-  background-color: tomato;
+  color: grey;
   transition: 0.3s ease;
 }
 

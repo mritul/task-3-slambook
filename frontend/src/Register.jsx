@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HelperMessage from "./components/HelperMessage";
 const axios = require("axios").default;
 
-const Register = ({
-  setFirstName,
-  firstName,
-  setLastName,
-  lastName,
-  setDepartment,
-  department,
-  setRegisterUsername,
-  registerUsername,
-  setRegisterPassword,
-  registerPassword,
-  usernameTaken,
-  setUsernameTaken,
-  about,
-  setAbout,
-  batch,
-  setBatch,
-}) => {
+const Register = () => {
   let navigate = useNavigate();
+
+  //useState hooks for handling input fields
+  // Registration form
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [department, setDepartment] = useState("eee");
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [batch, setBatch] = useState("");
+  const [about, setAbout] = useState("");
+
+  //useState hook to show helper message if username is already taken in the registration process
+  const [usernameTaken, setUsernameTaken] = useState(false);
+
   // Functions to handle input fields
   const handleFirstNameInput = (e) => {
     setFirstName(e.target.value);
@@ -65,7 +62,8 @@ const Register = ({
         about: about,
         batch: batch,
       },
-      url: "http://localhost:5000/api/users/register",
+      withCredentials: true,
+      url: "http://localhost:5000/register",
     })
       .then((response) => {
         if (response.data.msg === "Username available") {

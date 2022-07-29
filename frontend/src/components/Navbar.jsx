@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = ({ isLoggedIn, userDetails }) => {
   const navigate = useNavigate();
   return (
     <nav className="Navbar">
@@ -12,7 +12,7 @@ const Navbar = ({ isLoggedIn }) => {
         Slambook App
       </h1>
       <div className="btn-panel">
-        {!isLoggedIn ? (
+        {isLoggedIn ? (
           <>
             <Link to="/search">
               <button className="btn btn-search-nav">Search</button>
@@ -23,7 +23,12 @@ const Navbar = ({ isLoggedIn }) => {
               </button>
             </Link>
             <Link to="/logout">
-              <button className="btn btn-logout">Logout</button>
+              <button
+                className="btn btn-logout"
+                onClick={() => console.log(userDetails)}
+              >
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </button>
             </Link>
           </>
         ) : (
