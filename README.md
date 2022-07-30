@@ -40,8 +40,6 @@ _These fields are kept not required and are given a default value of an empty st
 
 <hr>
 
-- In the backend we use passport.js local strategy and the middleware authenticates.
+- In the backend we use passport.js local strategy that authenticates.
 
-- In the frontend, we get a response which carries the data of whether the user is authenticated or not. Hence:
-  - A global useState hook "isLoggedIn" can be initially set to false and if successfully logged in using the login page, it can be set to true.
-  - Now, for the other pages like profile, dashboard, search and slambook to be rendered, we can conditionally render them based on the isLoggedIn flag or else redirect the user to /login
+- In the frontend, we get a response which carries the data of whether the user is authenticated or not. Protected routes are then kept using useContext hook.
