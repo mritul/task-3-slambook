@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import HelperMessage from "./components/HelperMessage";
 import { Link, useNavigate } from "react-router-dom";
 const axios = require("axios");
-const Login = ({ setIsLoggedIn, setUserDetails }) => {
+const Login = () => {
   const navigate = useNavigate();
 
   // useState hooks for handling input fields
@@ -35,9 +35,9 @@ const Login = ({ setIsLoggedIn, setUserDetails }) => {
       url: "http://localhost:5000/login",
     })
       .then((res) => {
-        setUserDetails(res.data); // Since this state is global(passed through App.jsx), the user details can be accessed anywhere in this react app
+        // setUserDetails(res.data); // Since this state is global(passed through App.jsx), the user details can be accessed anywhere in this react app
         if (res.data.info.message === "Login successful") {
-          setIsLoggedIn(true);
+          // setIsLoggedIn(true);
           navigate("/dashboard");
         } else {
           // Making the conditionally rendered helper message appear and then disappear in 2 seconds
