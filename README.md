@@ -43,3 +43,9 @@ _These fields are kept not required and are given a default value of an empty st
 - In the backend we use passport.js local strategy that authenticates.
 
 - In the frontend, we get a response which carries the data of whether the user is authenticated or not. Protected routes are then kept using useContext hook.
+
+- For the button panels to change in the navbar, we use a useEffect that tracks auth.user (dependency array) i.e when the auth.user changes from null to the user details, a state is changed from true to false that re-renders the navbar with the respective button panel.
+
+- In the AuthContext, a useEffect is used in order to see if user is authenticated or not and then set the global user state initially so that when user refreshes the page, the pages to be rendered when user is authenticated are rendered flawlessly
+
+- In the login and register pages, a useEffect is run that tracks global state auth.user(dependency array), that checks the global user state(through AuthContext). If it is not null i.e if user is authenticated, then we navigate to dashboard

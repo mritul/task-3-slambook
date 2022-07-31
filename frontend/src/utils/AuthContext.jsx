@@ -1,0 +1,81 @@
+import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
+
+export const AuthContext = createContext(null);
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/authenticate",
+    })
+      .then((res) => {
+        if (res.data.user == null) {
+          setUser(false); //This means the user isn't authenticated
+        } else {
+          setUser(res.data.user);
+        }
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }, []);
+
+  const login = (username, password) => {
+    axios({
+      method: "POST",
+      data: {
+        username: username,
+        password: password,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/login",
+    })
+      .then((res) => {
+        if (res.data.info.message === "Login successful") {
+          setUser(res.data);
+          return "Login Succesful";
+        } else {
+          setUser(false); // So that helper message in login can be displayed only when false not null
+          return "Incorrect username or password";
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const logout = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/logout",
+    })
+      .then((res) => {
+        console.log(res.data);
+        setUser(null);
+        // window.location.assign("/login");
+        return res.data.message;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // fetch("http://localhost:5000/logout")
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data))
+    //   .catch((err) => {
+    //     throw err;
+    //   });
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};

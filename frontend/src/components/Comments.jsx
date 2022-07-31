@@ -3,8 +3,6 @@ const Comments = () => {
   return (
     <div className="Comments">
       <Comment />
-      <Comment />
-      <Comment />
     </div>
   );
 };

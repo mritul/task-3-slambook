@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Protection from "./utils/Protection";
 
 const SlamBook = () => {
   // useState hook to handle input fields of the slambook form
@@ -24,6 +25,7 @@ const SlamBook = () => {
     //Submit the form
   };
   return (
+    //<Protection>
     <div className="SlamBook">
       <h1 className="slam-book-title">Write the slambook</h1>
       <form id="slam-page-form" onSubmit={handleSubmit}>
@@ -62,6 +64,7 @@ const SlamBook = () => {
         <button className="btn btn-comment">Comment</button>
       </form>
     </div>
+    //</Protection>
   );
 };
 

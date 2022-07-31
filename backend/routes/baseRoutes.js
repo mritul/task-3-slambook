@@ -90,8 +90,38 @@ router.post("/login", (req, res, next) => {
       });
     }
     // AFTER THE AUTHENTICATION, NOW THE req.user HAS ALL THE DETAILS ABOUT THE USER WE NEED THAT WE CAN SEND TO THE FRONTEND
-    console.log(req.user); // Gives the entire user object in our mongoDB
+    // console.log(req.user); // Gives the entire user object in our mongoDB
   })(req, res, next);
+});
+
+// GET /logout - For logging the user out
+router.get("/logout", (req, res, next) => {
+  console.log(req.isAuthenticated());
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.json({ message: "Logged out successfully" });
+  });
+});
+
+// GET /authenticate - Frontend can use this route to check if user is authenticated currently
+router.get("/authenticate", (req, res) => {
+  if (req.isAuthenticated()) {
+    const object_to_send = {
+      _id: req.user._id,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      username: req.user.username,
+      slamBookAnswers: req.user.slambookAnswers,
+      department: req.user.department,
+      about: req.user.about,
+      batch: req.user.batch,
+    };
+    res.json({ authenticated: true, user: object_to_send });
+  } else {
+    res.json({ authenticated: false, user: null });
+  }
 });
 
 module.exports = router;

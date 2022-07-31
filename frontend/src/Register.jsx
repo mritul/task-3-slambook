@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HelperMessage from "./components/HelperMessage";
+import { useAuth } from "./utils/AuthContext";
 const axios = require("axios").default;
 
 const Register = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const auth = useAuth();
 
   //useState hooks for handling input fields
   // Registration form
@@ -18,6 +20,13 @@ const Register = () => {
 
   //useState hook to show helper message if username is already taken in the registration process
   const [usernameTaken, setUsernameTaken] = useState(false);
+
+  // useEffect to check if user is authenticated or not and choose to redirect accordingly
+  useEffect(() => {
+    if (auth.user) {
+      navigate("/dashboard");
+    }
+  }, [auth.user]);
 
   // Functions to handle input fields
   const handleFirstNameInput = (e) => {
