@@ -12,12 +12,7 @@ export const AuthProvider = ({ children }) => {
       url: "http://localhost:5000/authenticate",
     })
       .then((res) => {
-        if (res.data.user == null) {
-          setUser(false); //This means the user isn't authenticated
-        } else {
-          setUser(res.data.user);
-        }
-        // console.log(res.data);
+        setUser(res.data.user);
       })
       .catch((err) => {
         throw err;

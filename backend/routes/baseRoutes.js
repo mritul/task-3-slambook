@@ -108,12 +108,13 @@ router.get("/logout", (req, res, next) => {
 // GET /authenticate - Frontend can use this route to check if user is authenticated currently
 router.get("/authenticate", (req, res) => {
   if (req.isAuthenticated()) {
+    // Filtering out password before sending
     const object_to_send = {
       _id: req.user._id,
       firstName: req.user.firstName,
       lastName: req.user.lastName,
       username: req.user.username,
-      slamBookAnswers: req.user.slambookAnswers,
+      slambookAnswers: req.user.slambookAnswers,
       department: req.user.department,
       about: req.user.about,
       batch: req.user.batch,

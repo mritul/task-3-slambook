@@ -29,28 +29,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  slamBookAnswers: [
-    {
-      by: {
-        type: String,
-        default: "",
-      },
-      answers: {
-        answer1: {
-          type: String,
-          default: "",
-        },
-        answer2: {
-          type: String,
-          default: "",
-        },
-        answer3: {
-          type: String,
-          default: "",
-        },
-      },
-    },
-  ],
+  slambookAnswers: [],
 });
 
 module.exports = mongoose.model("User", userSchema);

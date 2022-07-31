@@ -17,24 +17,28 @@ const Dashboard = () => {
               className="avatar"
             />
             <div className="profile-details">
-              <h1 className="full-name">{`${auth.user.firstName} ${auth.user.lastName}`}</h1>
+              <h1 className="full-name">
+                {auth.user
+                  ? `${auth.user.firstName} ${auth.user.lastName}`
+                  : "N/A"}
+              </h1>
               <h1 className="username">
                 <i className="fa-solid fa-user"></i>
-                {auth.user.username}
+                {auth.user ? auth.user.username : "N/A"}
               </h1>
               <h1 className="department">
                 <i className="fa-solid fa-building"></i>
-                {auth.user.department}
+                {auth.user ? auth.user.department : "N/A"}
               </h1>
               <h1 className="batch">
                 <i className="fa-solid fa-calendar-days"></i>
-                {auth.user.batch}
+                {auth.user ? auth.user.batch : "N/A"}
               </h1>
             </div>
           </div>
           <div className="about-me">
             <h1>About me</h1>
-            <p>{auth.user.about}</p>
+            <p>{auth.user ? auth.user.about : "N/A"}</p>
           </div>
         </div>
         <div className="comments-container">
@@ -45,7 +49,6 @@ const Dashboard = () => {
             Use the delete button to remove the comment permanently and use the
             arrow to expand the comment
           </p>
-          {/* <h1>{auth.user.slamBookAnswers[0]}</h1> */}
           <Comments />
         </div>
       </div>

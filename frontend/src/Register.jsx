@@ -70,6 +70,7 @@ const Register = () => {
         department: department,
         about: about,
         batch: batch,
+        slambookAnswers: [{}], // For now sending empty data and when someone posts a slambook, this data can be updated later
       },
       withCredentials: true,
       url: "http://localhost:5000/register",
@@ -130,8 +131,8 @@ const Register = () => {
               name="username"
               value={registerUsername}
               onChange={handleRegisterUsernameInput}
-              pattern="[a-zA-Z0-9]+"
-              title="Username should be alphanumeric"
+              pattern="[a-z0-9]+"
+              title="Username should be lowercase alphanumeric"
             />
           </div>
           <div className="form-group">

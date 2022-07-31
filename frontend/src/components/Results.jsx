@@ -1,11 +1,10 @@
 import Result from "./Result";
-const Results = () => {
+const Results = ({ profiles }) => {
   return (
     <div className="Results">
-      <Result />
-      <Result />
-      <Result />
-      <Result />
+      {profiles.map((profile) => (
+        <Result profile={profile} />
+      ))}
     </div>
   );
 };
