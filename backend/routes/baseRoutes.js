@@ -4,6 +4,10 @@ const router = express.Router();
 const User = require("../models/userModel");
 const passport = require("passport");
 
+router.get("/", (req, res) => {
+  res.json({ status: 200, message: "Server up and running" });
+});
+
 // POST /register - Creation of a user in the database
 router.post("/register", (req, res) => {
   //Checking if username is already taken and then proceeding

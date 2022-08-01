@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:5000/authenticate",
+      url: "https://slambook-back-end.herokuapp.com//authenticate",
     })
       .then((res) => {
         setUser(res.data.user);
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
         password: password,
       },
       withCredentials: true,
-      url: "http://localhost:5000/login",
+      url: "https://slambook-back-end.herokuapp.com//login",
     })
       .then((res) => {
         if (res.data.info.message === "Login successful") {
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:5000/logout",
+      url: "https://slambook-back-end.herokuapp.com//logout",
     })
       .then((res) => {
         console.log(res.data);
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
       .catch((err) => {
         console.log(err);
       });
-    // fetch("http://localhost:5000/logout")
+    // fetch("https://slambook-back-end.herokuapp.com//logout")
     //   .then((res) => res.json())
     //   .then((data) => console.log(data))
     //   .catch((err) => {

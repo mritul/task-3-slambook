@@ -138,6 +138,32 @@ main {
   justify-content: center;
 }
 
+/* Intro */
+.Intro {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  animation: fade 2s;
+  width: 90%;
+  margin: auto;
+}
+
+.Intro img {
+  width: 40%;
+}
+
+.Intro .text h1 {
+  font-size: 2rem;
+  color: rgb(255, 66, 33);
+  margin-bottom: 2rem;
+}
+.Intro .text p {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: grey;
+  font-weight: 700;
+}
+
 /* Login */
 
 .Login {
@@ -735,6 +761,15 @@ main {
     min-width: 310px;
     margin-top: 5rem;
   }
+
+  .Intro {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .Intro img {
+    min-width: 220px;
+  }
 }
 
 @media screen and (max-width: 575px) {
@@ -763,6 +798,14 @@ main {
   .comment-btn-panel {
     gap: 10px;
   }
+
+  .Intro .text h1 {
+    font-size: 1.2rem;
+  }
+
+  .Intro .text p {
+    font-size: 0.8rem;
+  }
 }
 
 /* Animations */
@@ -775,5 +818,17 @@ main {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }
