@@ -1,3 +1,7 @@
+# Slambook App
+
+Check the website out [now](https://task-3-slambook.vercel.app/)
+
 # **How the app was built...**
 
 ## Registration phase
