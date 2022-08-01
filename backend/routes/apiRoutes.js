@@ -83,10 +83,10 @@ router.post("/slambook/:id", (req, res) => {
     });
 });
 
-// DELETE /api/slambook/:id - To delete the comment from the array in database and the comment to delete can be found out using the unique id it holds(which is passed in url params)
+// DELETE /api/slambook/:commentId - To delete the comment from the array in database and the comment to delete can be found out using the unique id it holds(which is passed in url params)
 router.delete("/delete-slambook/:commentId", (req, res) => {
   const comment_id = req.params.commentId;
-  const user_id = req.user._id;
+  const user_id = req.query.id;
   User.findOne({ _id: user_id })
     .then((user) => {
       const answers = user.slambookAnswers;

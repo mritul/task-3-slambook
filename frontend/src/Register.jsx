@@ -73,7 +73,7 @@ const Register = () => {
         slambookAnswers: [{}], // For now sending empty data and when someone posts a slambook, this data can be updated later
       },
       withCredentials: true,
-      url: "https://slambook-back-end.herokuapp.com/register",
+      url: "http://localhost:5000/register",
     })
       .then((response) => {
         if (response.data.msg === "Username available") {

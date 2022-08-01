@@ -45,7 +45,7 @@ const SlamBook = () => {
         answer2: answer2,
         answer3: answer3,
       },
-      url: `https://slambook-back-end.herokuapp.com/api/slambook/${userId.id}`,
+      url: `http://localhost:5000/api/slambook/${userId.id}`,
     })
       .then((res) => {
         setAnswer1("");

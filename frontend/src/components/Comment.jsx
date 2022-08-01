@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-const Comment = ({ comment }) => {
+const Comment = ({ comment, id }) => {
   // Hook to toggle the collapsible comment body
   // Comment body is conditionally rendered based on isOpen state(used as a toggle flag) which is toggled between true and false by adding event listener to the dropdown button
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ const Comment = ({ comment }) => {
     axios({
       method: "DELETE",
       withCredentials: true,
-      url: `https://slambook-back-end.herokuapp.com/api/delete-slambook/${comment.id}`,
+      url: `http://localhost:5000/api/delete-slambook/${comment.id}?id=${id}`,
     })
       .then((res) => {
         window.location.reload();
