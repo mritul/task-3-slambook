@@ -47,6 +47,11 @@
   margin-bottom: 1rem;
 }
 
+/* To make sure all the labels of input stay justified to left*/
+label {
+  text-align: start !important;
+}
+
 /* Navbar */
 .Navbar {
   height: 15vh;
@@ -572,6 +577,7 @@ main {
 .Comment {
   display: flex;
   width: 100%;
+  min-width: 320px;
   flex-direction: column;
   margin-bottom: 2rem;
   border-radius: 10px;
@@ -590,7 +596,7 @@ main {
 .author-details {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .author-details img {
@@ -599,7 +605,7 @@ main {
 }
 
 .author-name {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .other-author-details-panel {
@@ -612,6 +618,10 @@ main {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.author-dept {
+  margin-right: 2rem;
 }
 
 .comment-btn-panel {
@@ -739,6 +749,19 @@ main {
 
   .Register > h1 {
     font-size: 0.5rem;
+  }
+
+  .btn-delete {
+    font-size: 1.5rem;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    color: red;
+    background: none;
+  }
+
+  .comment-btn-panel {
+    gap: 10px;
   }
 }
 

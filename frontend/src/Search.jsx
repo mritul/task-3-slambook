@@ -56,8 +56,8 @@ const Search = () => {
             on the user
           </p>
           <p>
-            <i className="fa-solid fa-check"></i>Delete the comments made by you
-            on the user
+            <i className="fa-solid fa-check"></i>Search can be made by first
+            name or username
           </p>
           <p>
             <i className="fa-solid fa-check"></i>View the details of the user

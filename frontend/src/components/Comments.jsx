@@ -22,7 +22,7 @@ const Comments = () => {
   return (
     <div className="Comments">
       {comments.map((comment) => (
-        <Comment />
+        <Comment comment={comment} />
       ))}
     </div>
   );

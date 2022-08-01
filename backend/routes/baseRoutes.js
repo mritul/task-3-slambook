@@ -96,7 +96,6 @@ router.post("/login", (req, res, next) => {
 
 // GET /logout - For logging the user out
 router.get("/logout", (req, res, next) => {
-  console.log(req.isAuthenticated());
   req.logout((err) => {
     if (err) {
       return next(err);

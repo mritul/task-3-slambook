@@ -10,8 +10,10 @@ const Profile = () => {
   const auth = useAuth();
   // useEffect to check if the user in the session i.e logged in, is same as the user searched for. If yes, a message is displayed instead of the profile
   useEffect(() => {
-    if (auth.user._id == userId.id) {
-      setSelfLoggedIn(true);
+    if (auth.user) {
+      if (auth.user._id == userId.id) {
+        setSelfLoggedIn(true);
+      }
     }
   }, [auth.user]);
 
@@ -70,7 +72,7 @@ const Profile = () => {
           <div className="write-slam-book-section">
             <Link
               className="link-text write-slam-book-link"
-              to={`/slambook/${userId}`}
+              to={`/slambook/${userId.id}`}
             >
               Write Slambook
             </Link>
