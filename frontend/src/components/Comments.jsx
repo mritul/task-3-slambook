@@ -7,9 +7,10 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
   const auth = useAuth();
   useEffect(() => {
-    // To display the comments(slambook answers) made on the user by other users
-    setComments(auth.user.slambookAnswers);
-    console.log(comments);
+    if (auth.user) {
+      // To display the comments(slambook answers) made on the user by other users
+      setComments(auth.user.slambookAnswers);
+    }
   }, [auth.user]);
   return (
     <div className="Comments">
