@@ -101,7 +101,7 @@ router.delete("/delete-slambook/:commentId", (req, res) => {
       User.findByIdAndUpdate(user_id, { slambookAnswers: answers }).then(
         (doc) => {
           console.log("Deleted successfully");
-          res.send(doc.slambookAnswers);
+          res.send("Deleted successfully");
         }
       );
     })

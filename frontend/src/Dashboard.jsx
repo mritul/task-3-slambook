@@ -4,7 +4,6 @@ import Protection from "./utils/Protection";
 import { useAuth } from "./utils/AuthContext";
 const Dashboard = () => {
   const auth = useAuth();
-
   return (
     <Protection>
       <div className="Dashboard">

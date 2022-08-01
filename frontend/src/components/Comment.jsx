@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-const Comment = ({ comment, id }) => {
+const Comment = ({ comment, id, setComments, comments }) => {
   // Hook to toggle the collapsible comment body
   // Comment body is conditionally rendered based on isOpen state(used as a toggle flag) which is toggled between true and false by adding event listener to the dropdown button
   const [isOpen, setIsOpen] = useState(false);
@@ -8,13 +8,16 @@ const Comment = ({ comment, id }) => {
   // Function to handle deleting the comment
   const deleteComment = () => {
     console.log("Clicked");
+    // IMPORTANT TO KNOW THAT ITS A BETTER IDEA TO JUST CHANGE THE FRONTEND ON DELETING I.E NEED NOT RETURN THE UPDATED ARRAY FROM BACKEND AFTER DELETION AND USE THAT TO RE-RENDER IN FRONTEND
+    setComments(comments.filter((c) => c.id !== comment.id));
     axios({
       method: "DELETE",
       withCredentials: true,
       url: `https://slambook-back-end.herokuapp.com/api/delete-slambook/${comment.id}?id=${id}`,
     })
       .then((res) => {
-        window.location.reload();
+        // window.location.reload();
+        console.log(res.data);
       })
       .catch((err) => {
         throw err;

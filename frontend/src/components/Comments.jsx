@@ -16,8 +16,17 @@ const Comments = () => {
   return (
     <div className="Comments">
       {/* If there are no comments for the user([{}] in the database for slambookAnswers), nothing is displayed. Else comment is rendered  */}
+      {/* {console.log(comments)} */}
       {JSON.stringify(comments[0]) !== "{}"
-        ? comments.map((comment) => <Comment comment={comment} id={id} />)
+        ? comments.map((comment, idx) => (
+            <Comment
+              comment={comment}
+              id={id}
+              setComments={setComments}
+              key={idx}
+              comments={comments}
+            />
+          ))
         : ""}
     </div>
   );
