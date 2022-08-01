@@ -21,7 +21,7 @@ const Profile = () => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: `http://localhost:5000/api/get-user-details?id=${userId.id}`,
+      url: `https://slambook-back-end.herokuapp.com/api/get-user-details?id=${userId.id}`,
     })
       .then((res) => {
         setProfileDetails(res.data);
