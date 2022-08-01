@@ -9,14 +9,13 @@ const Comments = () => {
   useEffect(() => {
     // To display the comments(slambook answers) made on the user by other users
     setComments(auth.user.slambookAnswers);
+    console.log(comments);
   }, [auth.user]);
   return (
     <div className="Comments">
-      {JSON.stringify(comments[0]) !== "{}" ? (
-        <Comment comments={comments} />
-      ) : (
-        ""
-      )}
+      {JSON.stringify(comments[0]) !== "{}"
+        ? comments.map((comment) => <Comment comment={comment} />)
+        : ""}
     </div>
   );
 };
