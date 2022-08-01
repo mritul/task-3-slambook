@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import { useAuth } from "../utils/AuthContext";
+import { InfinitySpin } from "react-loader-spinner";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
@@ -19,12 +20,14 @@ const Comments = () => {
       .catch((err) => {
         throw err;
       });
-  }, [auth.user]);
+  }, []);
   return (
     <div className="Comments">
-      {comments.map((comment) => (
-        <Comment comment={comment} />
-      ))}
+      {comments ? (
+        comments.map((comment) => <Comment comment={comment} />)
+      ) : (
+        <InfinitySpin width="200" color="#4fa94d" />
+      )}
     </div>
   );
 };
