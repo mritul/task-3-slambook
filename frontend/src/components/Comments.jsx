@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Comment from "./Comment";
+import { useAuth } from "../utils/AuthContext";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
+  const auth = useAuth();
   useEffect(() => {
     // The below fetch is to get all the comments on the user from the backend and display them
     axios({
@@ -18,7 +19,7 @@ const Comments = () => {
       .catch((err) => {
         throw err;
       });
-  }, []);
+  }, [auth.user]);
   return (
     <div className="Comments">
       {comments.map((comment) => (
