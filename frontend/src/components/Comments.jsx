@@ -12,10 +12,10 @@ const Comments = () => {
   }, [auth.user]);
   return (
     <div className="Comments">
-      {comments ? (
-        comments.map((comment) => <Comment comment={comment} />)
+      {JSON.stringify(comments[0]) !== "{}" ? (
+        <Comment comments={comments} />
       ) : (
-        <InfinitySpin width="200" color="#4fa94d" />
+        ""
       )}
     </div>
   );
