@@ -11,7 +11,7 @@ const Comment = ({ comment }) => {
     axios({
       method: "DELETE",
       withCredentials: true,
-      url: `https://slambook-back-end.herokuapp.com//api/delete-slambook/${comment.id}`,
+      url: `https://slambook-back-end.herokuapp.com/api/delete-slambook/${comment.id}`,
     })
       .then((res) => {
         window.location.reload();

@@ -10,7 +10,7 @@ const Comments = () => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: "https://slambook-back-end.herokuapp.com//authenticate",
+      url: "https://slambook-back-end.herokuapp.com/authenticate",
     })
       .then((res) => {
         setComments(res.data.user.slambookAnswers);

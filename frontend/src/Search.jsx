@@ -22,7 +22,7 @@ const Search = () => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: `https://slambook-back-end.herokuapp.com//api/get-profiles?name=${searchDetails}`,
+      url: `https://slambook-back-end.herokuapp.com/api/get-profiles?name=${searchDetails}`,
     })
       .then((res) => {
         setProfiles(res.data.profiles);
