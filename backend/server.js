@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://task-3-slambook.vercel.app/",
+    origin: "https://task-3-slambook.vercel.app",
     credentials: true,
   })
 );

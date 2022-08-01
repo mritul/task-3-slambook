@@ -61,7 +61,7 @@ const Register = () => {
     // Since we use preventDefault, the form action won't be executed and hence we perform the post request through axios
     //Registration Form Submission by POST request through axios
     axios({
-      method: "post",
+      method: "POST",
       data: {
         firstName: firstName,
         lastName: lastName,
