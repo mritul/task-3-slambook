@@ -31,14 +31,21 @@ The mongoose model User consists of:
 
 _These above fields are required and hence are fulfilled during registration_
 
-- **comments** which is an object by itself that has:
-  - **by**
-  - **answers** which is the object that holds the answers to the 3 questions in slambook page of a user everytime someone fills the form:
-    - **answer1**
-    - **answer2**
-    - **answer3**
+- **slambookAnswers**
 
-_These fields are kept not required and are given a default value of an empty string("") because while registering, the data cannot be stored to database if it were set to required_
+_The slambookAnswers field is an empty array initially that is created to hold objects that have the information about the author of the comment and the answers to the 3 questions_
+
+#### _The structure of the object inside of slambookAnswers array is as follows:_
+
+- id - So that later for comment deletion, this id can be used
+- authorName
+- authorDepartment
+- authorBatch
+- answer1
+- answer2
+- answer3
+
+**NOTE :-** When a user registers, initally, the slambookAnswers is not just an empty array but holds one empty object inside of it. Hence while posting new slambook answers, or rendering the comments in a user's dashboard, this [{}] must be taken care of accordingly
 
 ## Authentication
 
