@@ -1,4 +1,5 @@
 const Intro = () => {
+  console.log(process.env);
   return (
     <div className="Intro">
       <img src="assets/friends.svg" alt="Landing Page Image" />

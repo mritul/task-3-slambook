@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Protection from "./utils/Protection";
-import { useAuth } from "./utils/AuthContext";
+import Protection from "../utils/Protection";
+import { useAuth } from "../utils/AuthContext";
 import axios from "axios";
 const Profile = () => {
   const userId = useParams();
@@ -11,7 +11,7 @@ const Profile = () => {
   // useEffect to check if the user in the session i.e logged in, is same as the user searched for. If yes, a message is displayed instead of the profile
   useEffect(() => {
     if (auth.user) {
-      if (auth.user._id == userId.id) {
+      if (auth.user._id === userId.id) {
         setSelfLoggedIn(true);
       }
     }
@@ -21,7 +21,7 @@ const Profile = () => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: `https://slambook-back-end.herokuapp.com/api/get-user-details?id=${userId.id}`,
+      url: `${process.env.REACT_APP_BASE_API_URL}/api/get-user-details?id=${userId.id}`,
     })
       .then((res) => {
         setProfileDetails(res.data);

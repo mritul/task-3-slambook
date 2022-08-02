@@ -27,7 +27,7 @@ const Navbar = () => {
     <nav className="Navbar">
       <h1
         onClick={() => {
-          navigate("/search");
+          navigate("/");
         }}
       >
         Slambook App

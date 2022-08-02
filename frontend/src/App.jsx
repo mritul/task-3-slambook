@@ -1,14 +1,14 @@
 import "./App.css";
 import { useState } from "react";
 import Navbar from "./components/Navbar.jsx";
-import Login from "./Login.jsx";
-import Register from "./Register.jsx";
-import Dashboard from "./Dashboard.jsx";
-import Search from "./Search.jsx";
-import Intro from "./Intro.jsx";
-import Profile from "./Profile.jsx";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Search from "./pages/Search.jsx";
+import Intro from "./pages/Intro.jsx";
+import Profile from "./pages/Profile.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SlamBook from "./SlamBook";
+import SlamBook from "./pages/SlamBook";
 import { AuthProvider } from "./utils/AuthContext";
 
 function App() {

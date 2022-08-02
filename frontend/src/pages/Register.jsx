@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import HelperMessage from "./components/HelperMessage";
-import { useAuth } from "./utils/AuthContext";
+import HelperMessage from "../components/HelperMessage";
+import { useAuth } from "../utils/AuthContext";
 const axios = require("axios").default;
 
 const Register = () => {
@@ -73,7 +73,7 @@ const Register = () => {
         slambookAnswers: [{}], // For now sending empty data and when someone posts a slambook, this data can be updated later
       },
       withCredentials: true,
-      url: "https://slambook-back-end.herokuapp.com/register",
+      url: `${process.env.REACT_APP_BASE_API_URL}/register`,
     })
       .then((response) => {
         if (response.data.msg === "Username available") {

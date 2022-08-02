@@ -1,7 +1,8 @@
 import React from "react";
-import Comments from "./components/Comments";
-import Protection from "./utils/Protection";
-import { useAuth } from "./utils/AuthContext";
+import Comments from "../components/Comments";
+import Protection from "../utils/Protection";
+import { useAuth } from "../utils/AuthContext";
+
 const Dashboard = () => {
   const auth = useAuth();
   return (

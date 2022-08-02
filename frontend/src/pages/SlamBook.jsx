@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Protection from "./utils/Protection";
-import { useAuth } from "./utils/AuthContext";
+import Protection from "../utils/Protection";
+import { useAuth } from "../utils/AuthContext";
 import { nanoid } from "nanoid";
 
 const SlamBook = () => {
@@ -45,7 +45,7 @@ const SlamBook = () => {
         answer2: answer2,
         answer3: answer3,
       },
-      url: `https://slambook-back-end.herokuapp.com/api/slambook/${userId.id}`,
+      url: `${process.env.REACT_APP_BASE_API_URL}/api/slambook/${userId.id}`,
     })
       .then((res) => {
         setAnswer1("");

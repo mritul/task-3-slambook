@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import HelperMessage from "./components/HelperMessage";
+import HelperMessage from "../components/HelperMessage";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./utils/AuthContext";
+import { useAuth } from "../utils/AuthContext";
 import { useEffect } from "react";
-const axios = require("axios");
 const Login = () => {
   const navigate = useNavigate();
   const auth = useAuth();

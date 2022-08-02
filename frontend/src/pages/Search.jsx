@@ -1,7 +1,6 @@
-import HelperMessage from "./components/HelperMessage";
-import Results from "./components/Results";
+import Results from "../components/Results";
 import { useState } from "react";
-import Protection from "./utils/Protection";
+import Protection from "../utils/Protection";
 import axios from "axios";
 import { InfinitySpin } from "react-loader-spinner";
 const Search = () => {
@@ -22,7 +21,7 @@ const Search = () => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: `https://slambook-back-end.herokuapp.com/api/get-profiles?name=${searchDetails}`,
+      url: `${process.env.REACT_APP_BASE_API_URL}/api/get-profiles?name=${searchDetails}`,
     })
       .then((res) => {
         setProfiles(res.data.profiles);
