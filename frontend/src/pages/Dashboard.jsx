@@ -29,7 +29,7 @@ const Dashboard = () => {
               </h1>
               <h1 className="department">
                 <i className="fa-solid fa-building"></i>
-                {auth.user ? auth.user.department : "N/A"}
+                {auth.user ? auth.user.department.toUpperCase() : "N/A"}
               </h1>
               <h1 className="batch">
                 <i className="fa-solid fa-calendar-days"></i>

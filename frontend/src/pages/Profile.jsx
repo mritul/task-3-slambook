@@ -56,7 +56,9 @@ const Profile = () => {
                 </h1>
                 <h1 className="department">
                   <i className="fa-solid fa-building"></i>
-                  {profileDetails ? profileDetails.department : ""}
+                  {profileDetails
+                    ? profileDetails.department.toUpperCase()
+                    : ""}
                 </h1>
                 <h1 className="batch">
                   <i className="fa-solid fa-calendar-days"></i>

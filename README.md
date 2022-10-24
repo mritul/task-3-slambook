@@ -1,6 +1,6 @@
 # Slambook App
 
-Check the website out [now](https://task-3-slambook.vercel.app/)
+Check the website out [now](https://slammy.vercel.app/)
 
 # **How the app was built...**
 

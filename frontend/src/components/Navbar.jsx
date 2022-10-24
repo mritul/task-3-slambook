@@ -30,7 +30,7 @@ const Navbar = () => {
           navigate("/");
         }}
       >
-        Slambook App
+        Slammy
       </h1>
       <div className="btn-panel">
         {isLoggedIn ? (
